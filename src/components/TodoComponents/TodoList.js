@@ -23,13 +23,15 @@ class TodoList extends React.Component {
   };
 }
 render() {
+    console.log(this.state);
     return (
         <div>
           
-            {this.state.list.map(thingTodo =>(
-                <Todo thingTodo={thingTodo} />
-            ))}
-
+            {this.state.list.map(listItem => {
+                return (<div>
+                    {listItem.task}
+                </div>)
+            })}
             <TodoForm />
         </div>
     )

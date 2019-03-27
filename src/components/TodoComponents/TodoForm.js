@@ -18,12 +18,17 @@ class TodoForm extends React.Component {
 render() {
     return (
         <div>
-<form>
-    <input type="text" {...this.state.task}/>
+        <form onSubmit={this.changeHandler}>
+            <input 
+            type="text" 
+            placeholder="Thing To Do"
+            task={this.state.task}
+            onChange = {this.changeHandler}
+            />
+            <AddTodo />
+        <ClearCompleted />
+        </form>
 
-</form>
-<AddTodo />
-<ClearCompleted />
         </div>
 
     )
