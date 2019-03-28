@@ -1,10 +1,9 @@
 import React from "react";
-import AddTodo from "./AddTodo";
-import ClearCompleted from "./ClearCompleted";
+
 
 class TodoForm extends React.Component {
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
         this.state = {
             task: "",
             id: Date.now(),
@@ -12,22 +11,26 @@ class TodoForm extends React.Component {
         };
     }
     changeHandler = event => {
-        this.setState({[event.target.task]: event.target.value});
+        this.setState({[event.target.name]: event.target.value});
+        console.log(event, event.target, event.target.value)
       };
 
 render() {
     return (
         <div>
-        <form onSubmit={this.changeHandler}>
+        <form onSubmit={(event)=>this.props.updateTodoList(event, this.state.task)}>
             <input 
+
             type="text" 
             placeholder="Thing To Do"
-            task={this.state.task}
-            onChange = {this.changeHandler}
+            name={"task"}
+            value={this.state.task}
+            onChange={this.changeHandler}
             />
-            <AddTodo />
-        <ClearCompleted />
+             <button type="submit">Add Todo</button>
+          
         </form>
+        <button>clear</button>
 
         </div>
 
